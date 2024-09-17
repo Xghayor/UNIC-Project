@@ -25,3 +25,7 @@ body {
     text-wrap: balance;
   }
 }
+
+.bg-black {
+  background-color: #0a0a0a !important;
+}
