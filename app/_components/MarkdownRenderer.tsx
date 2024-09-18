@@ -26,7 +26,7 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
 
           if (inline) {
             return (
-              <code className={`inline-code ${className}`} {...props}>
+              <code className={`inline-code bg-gray-800 text-white px-2 py-1 rounded ${className}`} {...props}>
                 {children}
               </code>
             );
@@ -49,7 +49,14 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
                   language={match[1]}
                   PreTag="pre"
                   codeTagProps={{ className: 'code-block' }}
-                  customStyle={{ backgroundColor: '#000', padding: '20px', borderRadius: '8px', width: '100%' }}
+                  customStyle={{
+                    backgroundColor: '#000', // Black background
+                    padding: '20px',
+                    borderRadius: '8px',
+                    width: '100%',
+                    fontFamily: 'Fira Code, monospace',
+                    fontSize: '14px',
+                  }}
                 >
                   {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>
@@ -69,7 +76,10 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
                     </button>
                   </CopyToClipboard>
                 </div>
-                <pre className="font-normal text-white bg-black rounded my-4 text-sm" style={{padding:'1rem 0 1rem 1rem'}}>
+                <pre
+                  className="font-normal text-white bg-black rounded my-4 text-sm"
+                  style={{ padding: '1rem 0 1rem 1rem', fontFamily: 'Fira Code, monospace' }}
+                >
                   <code className={`code-block ${className}`} {...props}>
                     {children}
                   </code>
@@ -78,44 +88,37 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
             );
           }
         },
-        pre({ children, ...props }: any) {
-          return (
-            <pre className="font-normal text-white bg-black p-4 rounded my-4 text-sm" {...props}>
-              {children}
-            </pre>
-          );
-        },
         p({ children, ...props }: any) {
           return (
-            <p className="font-normal text-sm leading-relaxed text-gray-300" {...props}>
+            <p className="font-normal text-base leading-relaxed text-gray-300 my-4" {...props}>
               {children}
             </p>
           );
         },
         strong({ children, ...props }: any) {
           return (
-            <strong className="font-bold text-white text-sm" {...props}>
+            <strong className="font-bold text-white text-base" {...props}>
               {children}
             </strong>
           );
         },
         ul({ children, ...props }: any) {
           return (
-            <ul className="list-disc pl-4 font-normal text-gray-300 text-sm" {...props}>
+            <ul className="list-disc pl-4 font-normal text-gray-300 text-base my-4" {...props}>
               {children}
             </ul>
           );
         },
         ol({ children, ...props }: any) {
           return (
-            <ol className="font-bold text-white text-sm list-decimal pl-6 my-4" {...props}>
+            <ol className="font-bold text-white text-base list-decimal pl-6 my-4" {...props}>
               {children}
             </ol>
           );
         },
         li({ children, ...props }: any) {
           return (
-            <li className="mb-2 font-normal text-gray-300 text-sm" {...props}>
+            <li className="mb-2 font-normal text-gray-300 text-base" {...props}>
               {children}
             </li>
           );

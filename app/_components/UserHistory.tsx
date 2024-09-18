@@ -19,7 +19,6 @@ const UserHistory: React.FC<UserHistoryProps> = ({ prompt, onNewChat, setIsHisto
   }, [prompt]);
 
   useEffect(() => {
-    // Sync the local state with the prop state
     setLocalIsHistoryVisible(true);
   }, [prompt]);
 
@@ -38,7 +37,7 @@ const UserHistory: React.FC<UserHistoryProps> = ({ prompt, onNewChat, setIsHisto
   return (
     <div className="relative">
       <div
-        className={`w-72 bg-gray-900 text-white p-4 h-screen fixed top-0 left-0 overflow-y-auto transition-transform duration-300
+        className={`w-72 bg-gray-900 text-white p-4 h-screen fixed top-0 left-0 overflow-y-auto transition-transform duration-300 transform 
         ${isLocalHistoryVisible ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className="flex justify-between items-center">
